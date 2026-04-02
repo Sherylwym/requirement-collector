@@ -9,15 +9,12 @@
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", Arial, sans-serif;
-      background: #f0f2f5;
-      color: #333;
-      min-height: 100vh;
+      background: #f0f2f5; color: #333; min-height: 100vh;
     }
 
     header {
       background: linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%);
-      color: white;
-      padding: 24px 32px;
+      color: white; padding: 24px 32px;
       box-shadow: 0 2px 12px rgba(255,107,53,0.3);
     }
     header h1 { font-size: 22px; font-weight: 600; }
@@ -62,7 +59,6 @@
     }
     textarea { resize: vertical; min-height: 80px; }
 
-    /* 分区标题 */
     .section-title {
       grid-column: 1 / -1;
       font-size: 13px; font-weight: 600; color: #FF6B35;
@@ -70,7 +66,6 @@
       border-left: 3px solid #FF6B35; margin-top: 4px;
     }
 
-    /* 定性/定量切换 */
     .type-toggle { display: flex; gap: 0; border-radius: 8px; overflow: hidden; border: 1.5px solid #e0e0e0; }
     .type-btn {
       flex: 1; padding: 9px 0; border: none; cursor: pointer; font-size: 14px;
@@ -83,15 +78,14 @@
 
     .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; grid-column: 1/-1; }
 
-    .form-actions {
-      margin-top: 28px; display: flex; justify-content: flex-end; gap: 12px;
-    }
+    .form-actions { margin-top: 28px; display: flex; justify-content: flex-end; gap: 12px; }
     .btn {
       padding: 10px 28px; border-radius: 8px; border: none; cursor: pointer;
       font-size: 14px; font-weight: 500; transition: all 0.2s;
     }
     .btn-primary { background: #FF6B35; color: white; box-shadow: 0 2px 8px rgba(255,107,53,0.35); }
     .btn-primary:hover { background: #e85d28; }
+    .btn-primary:disabled { background: #ffb89a; cursor: not-allowed; box-shadow: none; }
     .btn-secondary { background: #f5f5f5; color: #666; }
     .btn-secondary:hover { background: #ebebeb; }
 
@@ -115,15 +109,32 @@
       border: none; cursor: pointer; font-size: 13px; font-weight: 500; transition: all 0.2s;
     }
     .btn-export:hover { background: #C8E6C9; }
+    .btn-refresh {
+      background: #E3F2FD; color: #1976D2; padding: 8px 14px; border-radius: 8px;
+      border: none; cursor: pointer; font-size: 13px; transition: all 0.2s;
+    }
+    .btn-refresh:hover { background: #BBDEFB; }
 
     .empty-state { text-align: center; padding: 60px 0; color: #bbb; }
     .empty-state .icon { font-size: 48px; margin-bottom: 12px; }
+    .empty-state p { font-size: 14px; }
+
+    /* 加载状态 */
+    .loading {
+      text-align: center; padding: 40px; color: #aaa; font-size: 14px;
+    }
+    .spinner {
+      display: inline-block; width: 20px; height: 20px; border: 2px solid #f0f0f0;
+      border-top-color: #FF6B35; border-radius: 50%; animation: spin 0.8s linear infinite;
+      margin-right: 8px; vertical-align: middle;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
 
     .req-list { display: flex; flex-direction: column; gap: 12px; }
     .req-card {
       background: white; border-radius: 10px; padding: 20px 24px;
       box-shadow: 0 1px 8px rgba(0,0,0,0.06);
-      border-left: 4px solid #FF6B35; transition: box-shadow 0.2s; position: relative;
+      border-left: 4px solid #FF6B35; transition: box-shadow 0.2s;
     }
     .req-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
 
@@ -137,7 +148,6 @@
     .req-title { font-size: 16px; font-weight: 600; color: #222; margin-bottom: 6px; }
     .req-meta { display: flex; flex-wrap: wrap; gap: 12px; font-size: 12px; color: #888; margin-bottom: 10px; }
 
-    /* 收益区块 */
     .benefit-block {
       background: #FFF9F6; border: 1px solid #FFE0CC; border-radius: 8px;
       padding: 12px 16px; margin-top: 8px;
@@ -155,7 +165,6 @@
     .type-tag.quant { background: #E3F2FD; color: #1976D2; }
     .type-tag.qual { background: #F3E5F5; color: #7B1FA2; }
 
-    /* 提升幅度标签 */
     .delta-badge {
       background: #E8F5E9; color: #2E7D32; border: 1px solid #A5D6A7;
       padding: 4px 12px; border-radius: 6px; font-size: 13px; font-weight: 600;
@@ -175,7 +184,6 @@
     .btn-edit { background: #F0F7FF; color: #1976D2; }
     .btn-edit:hover { background: #DCEEFF; }
 
-    /* 智能排序说明 */
     .sort-info {
       font-size: 12px; color: #888; background: #f9f9f9; border-radius: 6px;
       padding: 8px 12px; margin-bottom: 12px; border-left: 3px solid #FF6B35;
@@ -194,7 +202,6 @@
     }
     .modal h2 { font-size: 16px; font-weight: 600; margin-bottom: 20px; color: #222; }
 
-    /* Toast */
     .toast {
       position: fixed; top: 24px; right: 24px; background: #333; color: white;
       padding: 12px 20px; border-radius: 8px; font-size: 14px; z-index: 9999;
@@ -216,7 +223,7 @@
 
 <header>
   <h1>📋 需求收集工具</h1>
-  <p>业务方提交需求，系统自动智能排序</p>
+  <p>业务方提交需求，多人共享，系统自动智能排序</p>
 </header>
 
 <div class="container">
@@ -231,10 +238,7 @@
       <h2>填写需求信息</h2>
       <form id="reqForm" onsubmit="submitReq(event)">
         <div class="form-grid">
-
-          <!-- 基本信息 -->
           <div class="section-title">📌 基本信息</div>
-
           <div class="form-group">
             <label>填写时间 <span class="req">*</span></label>
             <input type="date" id="f-date" required />
@@ -260,7 +264,6 @@
             <textarea id="f-detail" rows="3" placeholder="具体要做什么？功能描述、交互逻辑等"></textarea>
           </div>
 
-          <!-- 收益信息 -->
           <div class="section-title">💰 收益信息</div>
 
           <div class="form-group full-width">
@@ -277,7 +280,6 @@
             <textarea id="f-benefit" rows="2" placeholder="如：引导用户开启Push权限，以提升Push通知开启率和消息触达效率。" required></textarea>
           </div>
 
-          <!-- 定量字段 -->
           <div id="quant-section" class="quant-fields">
             <div class="form-group full-width">
               <label>输出指标 <span class="req">*</span><span class="hint">定量目标必填</span></label>
@@ -298,11 +300,10 @@
               </div>
             </div>
           </div>
-
         </div>
         <div class="form-actions">
           <button type="button" class="btn btn-secondary" onclick="resetForm()">重置</button>
-          <button type="submit" class="btn btn-primary">提交需求 ✓</button>
+          <button type="submit" class="btn btn-primary" id="submit-btn">提交需求 ✓</button>
         </div>
       </form>
     </div>
@@ -321,13 +322,14 @@
           <option value="date-desc">时间 ↓ 最新</option>
           <option value="date-asc">时间 ↑ 最早</option>
         </select>
+        <button class="btn-refresh" onclick="loadData(true)">🔄 刷新</button>
         <button class="btn-export" onclick="exportCSV()">📥 导出 CSV</button>
       </div>
     </div>
-    <div class="sort-info" id="sort-info">
-      🧠 <strong>智能排序规则：</strong>定量目标优先，按提升幅度（数值越大越靠前）；定性目标排后，按提交时间倒序。
+    <div class="sort-info">
+      🧠 <strong>智能排序规则：</strong>定量目标优先，按提升幅度高到低；定性目标排后，按提交时间倒序。
     </div>
-    <div id="req-list-container"></div>
+    <div id="req-list-container"><div class="loading"><span class="spinner"></span>加载中...</div></div>
   </div>
 </div>
 
@@ -395,7 +397,7 @@
     </div>
     <div class="form-actions">
       <button class="btn btn-secondary" onclick="closeEditModal()">取消</button>
-      <button class="btn btn-primary" onclick="saveEdit()">保存修改</button>
+      <button class="btn btn-primary" id="save-edit-btn" onclick="saveEdit()">保存修改</button>
     </div>
   </div>
 </div>
@@ -403,19 +405,24 @@
 <div class="toast" id="toast"></div>
 
 <script>
-  const STORAGE_KEY = 'req_collector_v2';
+  // ——— Supabase 配置 ———
+  const SUPABASE_URL = 'https://cuprtlqymbvzukwgbnyk.supabase.co';
+  const ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN1cHJ0bHF5bWJ2enVrd2dibnlrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUwOTk5NTIsImV4cCI6MjA5MDY3NTk1Mn0.WHrAwYi4xrFtMXigGfkOw4jj5TiY7guV1gqp9UKzOEE';
+  const API = `${SUPABASE_URL}/rest/v1/requirements`;
+  const HEADERS = {
+    'apikey': ANON_KEY,
+    'Authorization': `Bearer ${ANON_KEY}`,
+    'Content-Type': 'application/json',
+    'Prefer': 'return=representation'
+  };
 
-  function getData() {
-    try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
-    catch(e) { return []; }
-  }
-  function saveData(data) { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); }
+  let allData = [];
 
   // ——— 初始化 ———
   window.addEventListener('DOMContentLoaded', () => {
     document.getElementById('f-date').value = new Date().toISOString().split('T')[0];
     document.getElementById('f-week').value = getCurrentWeek();
-    renderList();
+    setType('quant');
   });
 
   function getCurrentWeek() {
@@ -425,14 +432,21 @@
     return `${now.getFullYear()}-W${String(week).padStart(2,'0')}`;
   }
 
+  // ——— 标签切换 ———
+  function switchTab(tab) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + tab).classList.add('active');
+    document.querySelectorAll('.tab-btn')[tab === 'form' ? 0 : 1].classList.add('active');
+    if (tab === 'list') loadData();
+  }
+
   // ——— 目标类型切换 ———
   function setType(type) {
     document.getElementById('f-type').value = type;
     document.getElementById('btn-quant').classList.toggle('active', type === 'quant');
     document.getElementById('btn-qual').classList.toggle('active', type === 'qual');
-    const qs = document.getElementById('quant-section');
-    qs.classList.toggle('hidden', type === 'qual');
-    // 定量时 metric/current/target 必填
+    document.getElementById('quant-section').classList.toggle('hidden', type === 'qual');
     ['f-metric','f-current','f-target'].forEach(id => {
       document.getElementById(id).required = (type === 'quant');
     });
@@ -445,17 +459,23 @@
     document.getElementById('e-quant-section').classList.toggle('hidden', type === 'qual');
   }
 
-  // ——— 标签切换 ———
-  function switchTab(tab) {
-    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.getElementById('tab-' + tab).classList.add('active');
-    document.querySelectorAll('.tab-btn')[tab === 'form' ? 0 : 1].classList.add('active');
-    if (tab === 'list') renderList();
+  // ——— 从 Supabase 加载数据 ———
+  async function loadData(showRefresh = false) {
+    const container = document.getElementById('req-list-container');
+    if (showRefresh) container.innerHTML = '<div class="loading"><span class="spinner"></span>刷新中...</div>';
+
+    try {
+      const res = await fetch(`${API}?order=created_at.desc&limit=200`, { headers: HEADERS });
+      if (!res.ok) throw new Error(await res.text());
+      allData = await res.json();
+      renderList();
+    } catch(e) {
+      container.innerHTML = `<div class="empty-state"><div class="icon">⚠️</div><p>加载失败：${e.message}</p></div>`;
+    }
   }
 
-  // ——— 提交 ———
-  function submitReq(e) {
+  // ——— 提交需求到 Supabase ———
+  async function submitReq(e) {
     e.preventDefault();
     const type = document.getElementById('f-type').value;
     if (type === 'quant') {
@@ -464,28 +484,39 @@
       if (!document.getElementById('f-target').value.trim()) { showToast('请填写结果', 'error'); return; }
     }
 
-    const req = {
-      id: Date.now(),
+    const payload = {
       date: document.getElementById('f-date').value,
       week: document.getElementById('f-week').value.trim(),
       proposer: document.getElementById('f-proposer').value.trim(),
       name: document.getElementById('f-name').value.trim(),
       background: document.getElementById('f-background').value.trim(),
-      detail: document.getElementById('f-detail').value.trim(),
+      detail: document.getElementById('f-detail').value.trim() || null,
       type,
       benefit: document.getElementById('f-benefit').value.trim(),
-      metric: type === 'quant' ? document.getElementById('f-metric').value.trim() : '',
-      metricDef: type === 'quant' ? document.getElementById('f-metric-def').value.trim() : '',
-      current: type === 'quant' ? document.getElementById('f-current').value.trim() : '',
-      target: type === 'quant' ? document.getElementById('f-target').value.trim() : '',
+      metric: type === 'quant' ? document.getElementById('f-metric').value.trim() : null,
+      metric_def: type === 'quant' ? (document.getElementById('f-metric-def').value.trim() || null) : null,
+      current_val: type === 'quant' ? document.getElementById('f-current').value.trim() : null,
+      target_val: type === 'quant' ? document.getElementById('f-target').value.trim() : null,
     };
 
-    const data = getData();
-    data.push(req);
-    saveData(data);
-    showToast('需求提交成功！', 'success');
-    resetForm();
-    setTimeout(() => switchTab('list'), 800);
+    const btn = document.getElementById('submit-btn');
+    btn.disabled = true; btn.textContent = '提交中...';
+
+    try {
+      const res = await fetch(API, {
+        method: 'POST',
+        headers: HEADERS,
+        body: JSON.stringify(payload)
+      });
+      if (!res.ok) throw new Error(await res.text());
+      showToast('需求提交成功！所有人都能看到 🎉', 'success');
+      resetForm();
+      setTimeout(() => switchTab('list'), 800);
+    } catch(e) {
+      showToast('提交失败：' + e.message, 'error');
+    } finally {
+      btn.disabled = false; btn.textContent = '提交需求 ✓';
+    }
   }
 
   function resetForm() {
@@ -497,63 +528,42 @@
 
   // ——— 智能排序分值 ———
   function smartScore(req) {
-    if (req.type === 'qual') return -1; // 定性排后面
-
-    // 尝试从 current/target 提取数值算提升幅度
-    const delta = extractDelta(req.current, req.target);
-    if (delta !== null) return delta;
-
-    // 提取不出来就给个中间分
-    return 0;
+    if (req.type === 'qual') return -1;
+    const delta = extractDelta(req.current_val, req.target_val);
+    return delta !== null ? delta : 0;
   }
 
   function extractDelta(current, target) {
-    // 尝试从字符串中提取百分比数值
+    if (!target && !current) return null;
     const parseNum = str => {
       if (!str) return null;
-      // 匹配 "提升Xpp" 或 "提升X%"
       const ppMatch = str.match(/提升\s*([\d.]+)\s*pp/i);
       if (ppMatch) return parseFloat(ppMatch[1]);
-      const upMatch = str.match(/[+增提升]\s*([\d.]+)\s*%?/i);
+      const upMatch = str.match(/[+增提升]\s*([\d.]+)/i);
       if (upMatch) return parseFloat(upMatch[1]);
-      // 匹配纯数字
       const nums = str.match(/([\d.]+)/g);
       return nums ? parseFloat(nums[nums.length - 1]) : null;
     };
-
-    // 优先从 target 里提升幅度
     const deltaFromTarget = parseNum(target);
     if (deltaFromTarget !== null) return deltaFromTarget;
-
-    // 算差值
-    const c = parseNum(current);
-    const t = parseNum(target);
+    const c = parseNum(current), t = parseNum(target);
     if (c !== null && t !== null) return t - c;
-
     return null;
   }
 
   // ——— 渲染列表 ———
   function renderList() {
-    const data = getData();
     const sortVal = document.getElementById('sort-select').value;
-    document.getElementById('req-count').textContent = data.length;
+    document.getElementById('req-count').textContent = allData.length;
 
-    const sortInfo = document.getElementById('sort-info');
-    if (sortVal === 'smart') {
-      sortInfo.style.display = 'block';
-    } else {
-      sortInfo.style.display = 'none';
-    }
-
-    const sorted = [...data].sort((a, b) => {
+    const sorted = [...allData].sort((a, b) => {
       if (sortVal === 'smart') {
         const sa = smartScore(a), sb = smartScore(b);
         if (sa !== sb) return sb - sa;
-        return b.date.localeCompare(a.date);
+        return (b.date || '').localeCompare(a.date || '');
       }
-      if (sortVal === 'date-desc') return b.date.localeCompare(a.date);
-      if (sortVal === 'date-asc') return a.date.localeCompare(b.date);
+      if (sortVal === 'date-desc') return (b.date||'').localeCompare(a.date||'');
+      if (sortVal === 'date-asc') return (a.date||'').localeCompare(b.date||'');
       return 0;
     });
 
@@ -571,13 +581,11 @@
         ? `<span class="type-tag quant">定量</span>`
         : `<span class="type-tag qual">定性</span>`;
 
-      // 提升幅度标签
       let deltaHtml = '';
-      if (req.type === 'quant' && req.current && req.target) {
-        deltaHtml = `<div class="delta-badge">📈 ${escHtml(req.current)} → ${escHtml(req.target)}</div>`;
+      if (req.type === 'quant' && req.current_val && req.target_val) {
+        deltaHtml = `<div class="delta-badge">📈 ${escHtml(req.current_val)} → ${escHtml(req.target_val)}</div>`;
       }
 
-      // 收益区块
       let benefitHtml = `<div class="benefit-block">
         <div class="b-title">💰 需求收益</div>
         <div class="benefit-row">
@@ -585,15 +593,16 @@
         </div>`;
       if (req.type === 'quant') {
         benefitHtml += `<div class="benefit-row" style="margin-top:8px">
-          <div class="b-item"><div class="b-label">输出指标</div><div class="b-val">${escHtml(req.metric)}</div></div>
-          ${req.metricDef ? `<div class="b-item"><div class="b-label">指标释义</div><div class="b-val">${escHtml(req.metricDef)}</div></div>` : ''}
-          <div class="b-item"><div class="b-label">现状</div><div class="b-val">${escHtml(req.current)}</div></div>
-          <div class="b-item"><div class="b-label">结果</div><div class="b-val">${escHtml(req.target)}</div></div>
+          <div class="b-item"><div class="b-label">输出指标</div><div class="b-val">${escHtml(req.metric||'')}</div></div>
+          ${req.metric_def ? `<div class="b-item"><div class="b-label">指标释义</div><div class="b-val">${escHtml(req.metric_def)}</div></div>` : ''}
+          <div class="b-item"><div class="b-label">现状</div><div class="b-val">${escHtml(req.current_val||'')}</div></div>
+          <div class="b-item"><div class="b-label">结果</div><div class="b-val">${escHtml(req.target_val||'')}</div></div>
         </div>`;
       }
       benefitHtml += `</div>`;
 
-      const bgHtml = req.background ? `<div class="req-desc"><strong>背景：</strong>${escHtml(req.background.slice(0,100))}${req.background.length>100?'<span class="req-desc-toggle" onclick="toggleDetail(this)">[展开]</span><span style="display:none">'+escHtml(req.background.slice(100))+'</span>':''}</div>` : '';
+      const bg = req.background || '';
+      const bgHtml = bg ? `<div class="req-desc"><strong>背景：</strong>${escHtml(bg.slice(0,100))}${bg.length>100?`<span class="req-desc-toggle" onclick="toggleDetail(this)">[展开]</span><span style="display:none">${escHtml(bg.slice(100))}</span>`:''}</div>` : '';
 
       return `<div class="req-card">
         <div class="req-card-top">
@@ -601,9 +610,9 @@
           <div class="req-main">
             <div class="req-title">${escHtml(req.name)}${typeTag}</div>
             <div class="req-meta">
-              <span>📅 ${req.date}</span>
-              <span>📆 ${req.week}</span>
-              <span>👤 ${escHtml(req.proposer)}</span>
+              <span>📅 ${req.date||''}</span>
+              <span>📆 ${req.week||''}</span>
+              <span>👤 ${escHtml(req.proposer||'')}</span>
             </div>
             ${bgHtml}
             ${benefitHtml}
@@ -625,31 +634,37 @@
   }
 
   // ——— 删除 ———
-  function deleteReq(id) {
+  async function deleteReq(id) {
     if (!confirm('确认删除这条需求？')) return;
-    saveData(getData().filter(r => r.id !== id));
-    renderList();
-    showToast('已删除', 'success');
+    try {
+      const res = await fetch(`${API}?id=eq.${id}`, { method: 'DELETE', headers: HEADERS });
+      if (!res.ok) throw new Error(await res.text());
+      allData = allData.filter(r => r.id !== id);
+      renderList();
+      showToast('已删除', 'success');
+    } catch(e) {
+      showToast('删除失败：' + e.message, 'error');
+    }
   }
 
   // ——— 编辑 ———
   let editingId = null;
 
   function openEdit(id) {
-    const req = getData().find(r => r.id === id);
+    const req = allData.find(r => r.id === id);
     if (!req) return;
     editingId = id;
-    document.getElementById('e-date').value = req.date;
-    document.getElementById('e-week').value = req.week;
-    document.getElementById('e-proposer').value = req.proposer;
-    document.getElementById('e-name').value = req.name;
-    document.getElementById('e-background').value = req.background;
+    document.getElementById('e-date').value = req.date || '';
+    document.getElementById('e-week').value = req.week || '';
+    document.getElementById('e-proposer').value = req.proposer || '';
+    document.getElementById('e-name').value = req.name || '';
+    document.getElementById('e-background').value = req.background || '';
     document.getElementById('e-detail').value = req.detail || '';
-    document.getElementById('e-benefit').value = req.benefit;
+    document.getElementById('e-benefit').value = req.benefit || '';
     document.getElementById('e-metric').value = req.metric || '';
-    document.getElementById('e-metric-def').value = req.metricDef || '';
-    document.getElementById('e-current').value = req.current || '';
-    document.getElementById('e-target').value = req.target || '';
+    document.getElementById('e-metric-def').value = req.metric_def || '';
+    document.getElementById('e-current').value = req.current_val || '';
+    document.getElementById('e-target').value = req.target_val || '';
     setEditType(req.type || 'quant');
     document.getElementById('editModal').classList.add('show');
   }
@@ -659,47 +674,58 @@
     editingId = null;
   }
 
-  function saveEdit() {
+  async function saveEdit() {
     if (!editingId) return;
-    const data = getData();
-    const idx = data.findIndex(r => r.id === editingId);
-    if (idx === -1) return;
     const type = document.getElementById('e-type').value;
-    data[idx] = {
-      ...data[idx],
+    const payload = {
       date: document.getElementById('e-date').value,
       week: document.getElementById('e-week').value.trim(),
       proposer: document.getElementById('e-proposer').value.trim(),
       name: document.getElementById('e-name').value.trim(),
       background: document.getElementById('e-background').value.trim(),
-      detail: document.getElementById('e-detail').value.trim(),
+      detail: document.getElementById('e-detail').value.trim() || null,
       type,
       benefit: document.getElementById('e-benefit').value.trim(),
-      metric: document.getElementById('e-metric').value.trim(),
-      metricDef: document.getElementById('e-metric-def').value.trim(),
-      current: document.getElementById('e-current').value.trim(),
-      target: document.getElementById('e-target').value.trim(),
+      metric: document.getElementById('e-metric').value.trim() || null,
+      metric_def: document.getElementById('e-metric-def').value.trim() || null,
+      current_val: document.getElementById('e-current').value.trim() || null,
+      target_val: document.getElementById('e-target').value.trim() || null,
     };
-    saveData(data);
-    closeEditModal();
-    renderList();
-    showToast('修改已保存', 'success');
+
+    const btn = document.getElementById('save-edit-btn');
+    btn.disabled = true; btn.textContent = '保存中...';
+
+    try {
+      const res = await fetch(`${API}?id=eq.${editingId}`, {
+        method: 'PATCH', headers: HEADERS, body: JSON.stringify(payload)
+      });
+      if (!res.ok) throw new Error(await res.text());
+      const updated = await res.json();
+      const idx = allData.findIndex(r => r.id === editingId);
+      if (idx !== -1) allData[idx] = updated[0] || { ...allData[idx], ...payload };
+      closeEditModal();
+      renderList();
+      showToast('修改已保存', 'success');
+    } catch(e) {
+      showToast('保存失败：' + e.message, 'error');
+    } finally {
+      btn.disabled = false; btn.textContent = '保存修改';
+    }
   }
 
   // ——— 导出 CSV ———
   function exportCSV() {
-    const data = getData();
-    if (!data.length) { showToast('没有数据可导出', 'error'); return; }
-    const sorted = [...data].sort((a,b) => {
+    if (!allData.length) { showToast('没有数据可导出', 'error'); return; }
+    const sorted = [...allData].sort((a, b) => {
       const sa = smartScore(a), sb = smartScore(b);
       if (sa !== sb) return sb - sa;
-      return b.date.localeCompare(a.date);
+      return (b.date||'').localeCompare(a.date||'');
     });
     const headers = ['排名','填写时间','归属周','需求提出人','需求名称','需求背景','需求详述','目标类型','需求收益','输出指标','指标释义','现状','结果'];
     const rows = sorted.map((r,i) => [
       i+1, r.date, r.week, r.proposer, r.name, r.background, r.detail||'',
-      r.type==='quant'?'定量':'定性', r.benefit, r.metric||'', r.metricDef||'', r.current||'', r.target||''
-    ].map(v => `"${String(v).replace(/"/g,'""')}"`));
+      r.type==='quant'?'定量':'定性', r.benefit, r.metric||'', r.metric_def||'', r.current_val||'', r.target_val||''
+    ].map(v => `"${String(v||'').replace(/"/g,'""')}"`));
     const csv = [headers.join(','), ...rows.map(r=>r.join(','))].join('\n');
     const blob = new Blob(['\uFEFF'+csv], {type:'text/csv;charset=utf-8;'});
     const url = URL.createObjectURL(blob);
@@ -717,7 +743,7 @@
   function showToast(msg, type='') {
     const t = document.getElementById('toast');
     t.textContent = msg; t.className = 'toast show ' + type;
-    setTimeout(() => t.className = 'toast', 2500);
+    setTimeout(() => t.className = 'toast', 2800);
   }
 </script>
 </body>
