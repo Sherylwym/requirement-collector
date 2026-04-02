@@ -20,381 +20,195 @@
       padding: 24px 32px;
       box-shadow: 0 2px 12px rgba(255,107,53,0.3);
     }
-
     header h1 { font-size: 22px; font-weight: 600; }
     header p { font-size: 13px; opacity: 0.85; margin-top: 4px; }
 
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 24px 16px;
-    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 24px 16px; }
 
-    /* 标签页 */
-    .tabs {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 20px;
-    }
-
+    .tabs { display: flex; gap: 8px; margin-bottom: 20px; }
     .tab-btn {
-      padding: 10px 24px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 14px;
-      font-weight: 500;
-      transition: all 0.2s;
-      background: white;
-      color: #666;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+      padding: 10px 24px; border: none; border-radius: 8px; cursor: pointer;
+      font-size: 14px; font-weight: 500; transition: all 0.2s;
+      background: white; color: #666; box-shadow: 0 1px 4px rgba(0,0,0,0.08);
     }
-
-    .tab-btn.active {
-      background: #FF6B35;
-      color: white;
-      box-shadow: 0 2px 8px rgba(255,107,53,0.4);
-    }
-
+    .tab-btn.active { background: #FF6B35; color: white; box-shadow: 0 2px 8px rgba(255,107,53,0.4); }
     .tab-panel { display: none; }
     .tab-panel.active { display: block; }
 
-    /* 表单卡片 */
     .card {
-      background: white;
-      border-radius: 12px;
-      padding: 28px 32px;
+      background: white; border-radius: 12px; padding: 28px 32px;
       box-shadow: 0 2px 12px rgba(0,0,0,0.06);
     }
-
     .card h2 {
-      font-size: 16px;
-      font-weight: 600;
-      color: #222;
-      margin-bottom: 24px;
-      padding-bottom: 12px;
-      border-bottom: 2px solid #FF6B35;
+      font-size: 16px; font-weight: 600; color: #222;
+      margin-bottom: 24px; padding-bottom: 12px; border-bottom: 2px solid #FF6B35;
     }
 
-    .form-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group.full-width { grid-column: 1 / -1; }
 
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .form-group.full-width {
-      grid-column: 1 / -1;
-    }
-
-    label {
-      font-size: 13px;
-      font-weight: 500;
-      color: #555;
-    }
-
-    label .required {
-      color: #FF6B35;
-      margin-left: 2px;
-    }
+    label { font-size: 13px; font-weight: 500; color: #555; }
+    label .req { color: #FF6B35; margin-left: 2px; }
+    label .hint { font-size: 11px; color: #aaa; font-weight: 400; margin-left: 6px; }
 
     input, select, textarea {
-      padding: 10px 14px;
-      border: 1.5px solid #e0e0e0;
-      border-radius: 8px;
-      font-size: 14px;
-      color: #333;
-      transition: border-color 0.2s;
-      font-family: inherit;
-      outline: none;
+      padding: 10px 14px; border: 1.5px solid #e0e0e0; border-radius: 8px;
+      font-size: 14px; color: #333; transition: border-color 0.2s;
+      font-family: inherit; outline: none;
     }
-
     input:focus, select:focus, textarea:focus {
-      border-color: #FF6B35;
-      box-shadow: 0 0 0 3px rgba(255,107,53,0.1);
+      border-color: #FF6B35; box-shadow: 0 0 0 3px rgba(255,107,53,0.1);
     }
-
     textarea { resize: vertical; min-height: 80px; }
 
-    .benefit-input-wrap {
-      display: flex;
-      align-items: center;
-      gap: 8px;
+    /* 分区标题 */
+    .section-title {
+      grid-column: 1 / -1;
+      font-size: 13px; font-weight: 600; color: #FF6B35;
+      padding: 8px 12px; background: #FFF3EE; border-radius: 6px;
+      border-left: 3px solid #FF6B35; margin-top: 4px;
     }
 
-    .benefit-input-wrap input {
-      flex: 1;
+    /* 定性/定量切换 */
+    .type-toggle { display: flex; gap: 0; border-radius: 8px; overflow: hidden; border: 1.5px solid #e0e0e0; }
+    .type-btn {
+      flex: 1; padding: 9px 0; border: none; cursor: pointer; font-size: 14px;
+      font-weight: 500; background: white; color: #888; transition: all 0.2s;
     }
+    .type-btn.active { background: #FF6B35; color: white; }
 
-    .benefit-unit {
-      font-size: 13px;
-      color: #999;
-      white-space: nowrap;
-    }
+    .quant-fields { display: contents; }
+    .quant-fields.hidden > * { display: none; }
+
+    .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; grid-column: 1/-1; }
 
     .form-actions {
-      margin-top: 28px;
-      display: flex;
-      justify-content: flex-end;
-      gap: 12px;
+      margin-top: 28px; display: flex; justify-content: flex-end; gap: 12px;
     }
-
     .btn {
-      padding: 10px 28px;
-      border-radius: 8px;
-      border: none;
-      cursor: pointer;
-      font-size: 14px;
-      font-weight: 500;
-      transition: all 0.2s;
+      padding: 10px 28px; border-radius: 8px; border: none; cursor: pointer;
+      font-size: 14px; font-weight: 500; transition: all 0.2s;
     }
-
-    .btn-primary {
-      background: #FF6B35;
-      color: white;
-      box-shadow: 0 2px 8px rgba(255,107,53,0.35);
-    }
-
+    .btn-primary { background: #FF6B35; color: white; box-shadow: 0 2px 8px rgba(255,107,53,0.35); }
     .btn-primary:hover { background: #e85d28; }
-
-    .btn-secondary {
-      background: #f5f5f5;
-      color: #666;
-    }
-
+    .btn-secondary { background: #f5f5f5; color: #666; }
     .btn-secondary:hover { background: #ebebeb; }
 
-    /* 需求列表 */
+    /* 列表 */
     .list-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 16px;
-      flex-wrap: wrap;
-      gap: 12px;
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 16px; flex-wrap: wrap; gap: 12px;
     }
-
-    .list-controls {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
+    .list-controls { display: flex; align-items: center; gap: 12px; }
     .sort-select {
-      padding: 8px 12px;
-      border: 1.5px solid #e0e0e0;
-      border-radius: 8px;
-      font-size: 13px;
-      cursor: pointer;
-      outline: none;
+      padding: 8px 12px; border: 1.5px solid #e0e0e0; border-radius: 8px;
+      font-size: 13px; cursor: pointer; outline: none;
     }
-
     .sort-select:focus { border-color: #FF6B35; }
-
     .count-badge {
-      background: #FF6B35;
-      color: white;
-      padding: 3px 10px;
-      border-radius: 12px;
-      font-size: 12px;
-      font-weight: 600;
+      background: #FF6B35; color: white; padding: 3px 10px;
+      border-radius: 12px; font-size: 12px; font-weight: 600;
     }
-
-    .empty-state {
-      text-align: center;
-      padding: 60px 0;
-      color: #bbb;
+    .btn-export {
+      background: #E8F5E9; color: #388E3C; padding: 8px 18px; border-radius: 8px;
+      border: none; cursor: pointer; font-size: 13px; font-weight: 500; transition: all 0.2s;
     }
+    .btn-export:hover { background: #C8E6C9; }
 
+    .empty-state { text-align: center; padding: 60px 0; color: #bbb; }
     .empty-state .icon { font-size: 48px; margin-bottom: 12px; }
-    .empty-state p { font-size: 14px; }
 
-    /* 需求卡片列表 */
     .req-list { display: flex; flex-direction: column; gap: 12px; }
-
     .req-card {
-      background: white;
-      border-radius: 10px;
-      padding: 20px 24px;
+      background: white; border-radius: 10px; padding: 20px 24px;
       box-shadow: 0 1px 8px rgba(0,0,0,0.06);
-      border-left: 4px solid #FF6B35;
-      transition: box-shadow 0.2s;
-      position: relative;
+      border-left: 4px solid #FF6B35; transition: box-shadow 0.2s; position: relative;
     }
-
     .req-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
 
-    .req-card-top {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 12px;
-    }
-
-    .req-rank {
-      font-size: 22px;
-      font-weight: 700;
-      color: #FF6B35;
-      min-width: 32px;
-      line-height: 1;
-      margin-top: 2px;
-    }
-
+    .req-card-top { display: flex; align-items: flex-start; gap: 14px; }
+    .req-rank { font-size: 22px; font-weight: 700; color: #FF6B35; min-width: 36px; line-height: 1; margin-top: 2px; }
     .req-rank.top1 { color: #FFB800; }
     .req-rank.top2 { color: #9E9E9E; }
     .req-rank.top3 { color: #CD7F32; }
 
-    .req-main { flex: 1; }
+    .req-main { flex: 1; min-width: 0; }
+    .req-title { font-size: 16px; font-weight: 600; color: #222; margin-bottom: 6px; }
+    .req-meta { display: flex; flex-wrap: wrap; gap: 12px; font-size: 12px; color: #888; margin-bottom: 10px; }
 
-    .req-title {
-      font-size: 16px;
-      font-weight: 600;
-      color: #222;
-      margin-bottom: 6px;
+    /* 收益区块 */
+    .benefit-block {
+      background: #FFF9F6; border: 1px solid #FFE0CC; border-radius: 8px;
+      padding: 12px 16px; margin-top: 8px;
+    }
+    .benefit-block .b-title { font-size: 12px; font-weight: 600; color: #FF6B35; margin-bottom: 8px; }
+    .benefit-row { display: flex; flex-wrap: wrap; gap: 16px; font-size: 13px; color: #555; }
+    .benefit-row .b-item { display: flex; flex-direction: column; gap: 2px; }
+    .benefit-row .b-label { font-size: 11px; color: #aaa; }
+    .benefit-row .b-val { font-weight: 500; color: #333; }
+
+    .type-tag {
+      display: inline-block; padding: 2px 8px; border-radius: 4px;
+      font-size: 11px; font-weight: 600; margin-left: 8px; vertical-align: middle;
+    }
+    .type-tag.quant { background: #E3F2FD; color: #1976D2; }
+    .type-tag.qual { background: #F3E5F5; color: #7B1FA2; }
+
+    /* 提升幅度标签 */
+    .delta-badge {
+      background: #E8F5E9; color: #2E7D32; border: 1px solid #A5D6A7;
+      padding: 4px 12px; border-radius: 6px; font-size: 13px; font-weight: 600;
+      white-space: nowrap; align-self: flex-start; margin-top: 2px;
     }
 
-    .req-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      font-size: 12px;
-      color: #888;
-      margin-bottom: 8px;
-    }
+    .req-desc { font-size: 13px; color: #666; line-height: 1.6; margin-top: 8px; }
+    .req-desc-toggle { color: #FF6B35; cursor: pointer; font-size: 12px; margin-left: 6px; }
 
-    .req-meta span { display: flex; align-items: center; gap: 3px; }
-
-    .benefit-tag {
-      background: #FFF3EE;
-      color: #FF6B35;
-      border: 1px solid #FFCAB4;
-      padding: 4px 12px;
-      border-radius: 6px;
-      font-size: 13px;
-      font-weight: 600;
-      white-space: nowrap;
-    }
-
-    .req-desc {
-      font-size: 13px;
-      color: #666;
-      line-height: 1.6;
-      margin-top: 8px;
-    }
-
-    .req-desc-toggle {
-      color: #FF6B35;
-      cursor: pointer;
-      font-size: 12px;
-      margin-left: 6px;
-    }
-
-    .req-actions {
-      display: flex;
-      gap: 8px;
-      margin-top: 12px;
-    }
-
+    .req-actions { display: flex; gap: 8px; margin-top: 12px; }
     .btn-sm {
-      padding: 5px 14px;
-      border-radius: 6px;
-      border: none;
-      cursor: pointer;
-      font-size: 12px;
-      font-weight: 500;
-      transition: all 0.2s;
+      padding: 5px 14px; border-radius: 6px; border: none; cursor: pointer;
+      font-size: 12px; font-weight: 500; transition: all 0.2s;
     }
-
-    .btn-danger {
-      background: #FFF0F0;
-      color: #E53935;
-    }
-
+    .btn-danger { background: #FFF0F0; color: #E53935; }
     .btn-danger:hover { background: #FFE0E0; }
-
-    .btn-edit {
-      background: #F0F7FF;
-      color: #1976D2;
-    }
-
+    .btn-edit { background: #F0F7FF; color: #1976D2; }
     .btn-edit:hover { background: #DCEEFF; }
 
-    /* 导出按钮 */
-    .btn-export {
-      background: #E8F5E9;
-      color: #388E3C;
-      padding: 8px 18px;
-      border-radius: 8px;
-      border: none;
-      cursor: pointer;
-      font-size: 13px;
-      font-weight: 500;
-      transition: all 0.2s;
+    /* 智能排序说明 */
+    .sort-info {
+      font-size: 12px; color: #888; background: #f9f9f9; border-radius: 6px;
+      padding: 8px 12px; margin-bottom: 12px; border-left: 3px solid #FF6B35;
     }
 
-    .btn-export:hover { background: #C8E6C9; }
+    /* 弹窗 */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4);
+      z-index: 1000; align-items: center; justify-content: center;
+    }
+    .modal-overlay.show { display: flex; }
+    .modal {
+      background: white; border-radius: 12px; padding: 28px 32px;
+      width: 90%; max-width: 660px; max-height: 90vh; overflow-y: auto;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+    }
+    .modal h2 { font-size: 16px; font-weight: 600; margin-bottom: 20px; color: #222; }
 
     /* Toast */
     .toast {
-      position: fixed;
-      top: 24px;
-      right: 24px;
-      background: #333;
-      color: white;
-      padding: 12px 20px;
-      border-radius: 8px;
-      font-size: 14px;
-      z-index: 9999;
-      opacity: 0;
-      transform: translateY(-10px);
-      transition: all 0.3s;
-      pointer-events: none;
+      position: fixed; top: 24px; right: 24px; background: #333; color: white;
+      padding: 12px 20px; border-radius: 8px; font-size: 14px; z-index: 9999;
+      opacity: 0; transform: translateY(-10px); transition: all 0.3s; pointer-events: none;
     }
-
     .toast.show { opacity: 1; transform: translateY(0); }
     .toast.success { background: #388E3C; }
     .toast.error { background: #D32F2F; }
 
-    /* 编辑弹窗 */
-    .modal-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.4);
-      z-index: 1000;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .modal-overlay.show { display: flex; }
-
-    .modal {
-      background: white;
-      border-radius: 12px;
-      padding: 28px 32px;
-      width: 90%;
-      max-width: 620px;
-      max-height: 90vh;
-      overflow-y: auto;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.15);
-    }
-
-    .modal h2 {
-      font-size: 16px;
-      font-weight: 600;
-      margin-bottom: 20px;
-      color: #222;
-    }
-
     @media (max-width: 600px) {
       .form-grid { grid-template-columns: 1fr; }
-      header { padding: 16px 16px; }
+      header { padding: 16px; }
       .card { padding: 20px 16px; }
+      .row2 { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -402,11 +216,10 @@
 
 <header>
   <h1>📋 需求收集工具</h1>
-  <p>业务方提交需求，系统自动按收益排序</p>
+  <p>业务方提交需求，系统自动智能排序</p>
 </header>
 
 <div class="container">
-  <!-- 标签页 -->
   <div class="tabs">
     <button class="tab-btn active" onclick="switchTab('form')">➕ 提交需求</button>
     <button class="tab-btn" onclick="switchTab('list')">📊 需求排序</button>
@@ -418,44 +231,74 @@
       <h2>填写需求信息</h2>
       <form id="reqForm" onsubmit="submitReq(event)">
         <div class="form-grid">
+
+          <!-- 基本信息 -->
+          <div class="section-title">📌 基本信息</div>
+
           <div class="form-group">
-            <label>填写时间 <span class="required">*</span></label>
+            <label>填写时间 <span class="req">*</span></label>
             <input type="date" id="f-date" required />
           </div>
           <div class="form-group">
-            <label>归属周 <span class="required">*</span></label>
+            <label>归属周 <span class="req">*</span></label>
             <input type="text" id="f-week" placeholder="如：2024-W15" required />
           </div>
           <div class="form-group">
-            <label>需求提出人 <span class="required">*</span></label>
+            <label>需求提出人 <span class="req">*</span></label>
             <input type="text" id="f-proposer" placeholder="请输入姓名" required />
           </div>
           <div class="form-group">
-            <label>需求名称 <span class="required">*</span></label>
+            <label>需求名称 <span class="req">*</span></label>
             <input type="text" id="f-name" placeholder="简洁描述需求" required />
           </div>
           <div class="form-group full-width">
-            <label>需求背景 <span class="required">*</span></label>
+            <label>需求背景 <span class="req">*</span></label>
             <textarea id="f-background" rows="3" placeholder="为什么提这个需求？现在有什么问题？" required></textarea>
           </div>
           <div class="form-group full-width">
             <label>需求详述</label>
-            <textarea id="f-detail" rows="4" placeholder="具体要做什么？功能描述、交互逻辑等"></textarea>
+            <textarea id="f-detail" rows="3" placeholder="具体要做什么？功能描述、交互逻辑等"></textarea>
           </div>
+
+          <!-- 收益信息 -->
+          <div class="section-title">💰 收益信息</div>
+
           <div class="form-group full-width">
-            <label>需求收益 <span class="required">*</span> <span style="font-size:12px;color:#999;font-weight:400;">（请填写数值，如预计GMV增长、节省工时等）</span></label>
-            <div class="benefit-input-wrap">
-              <input type="number" id="f-benefit" placeholder="如：50000" min="0" step="any" required />
-              <select id="f-benefit-unit" style="width:160px;">
-                <option value="万元GMV">万元GMV</option>
-                <option value="万元收入">万元收入</option>
-                <option value="工时/月">工时/月（节省）</option>
-                <option value="万DAU">万DAU</option>
-                <option value="自定义">自定义</option>
-              </select>
+            <label>目标类型 <span class="req">*</span></label>
+            <div class="type-toggle">
+              <button type="button" class="type-btn active" id="btn-quant" onclick="setType('quant')">📊 定量目标</button>
+              <button type="button" class="type-btn" id="btn-qual" onclick="setType('qual')">💬 定性目标</button>
             </div>
-            <input type="text" id="f-benefit-custom" placeholder="自定义单位说明" style="margin-top:8px;display:none;" />
           </div>
+          <input type="hidden" id="f-type" value="quant" />
+
+          <div class="form-group full-width">
+            <label>需求收益 <span class="req">*</span><span class="hint">描述这个需求能带来什么价值</span></label>
+            <textarea id="f-benefit" rows="2" placeholder="如：引导用户开启Push权限，以提升Push通知开启率和消息触达效率。" required></textarea>
+          </div>
+
+          <!-- 定量字段 -->
+          <div id="quant-section" class="quant-fields">
+            <div class="form-group full-width">
+              <label>输出指标 <span class="req">*</span><span class="hint">定量目标必填</span></label>
+              <input type="text" id="f-metric" placeholder="如：Push通知开启率" />
+            </div>
+            <div class="form-group full-width">
+              <label>指标释义<span class="hint">选填，帮助他人理解指标含义</span></label>
+              <input type="text" id="f-metric-def" placeholder="如：是否开启过Push" />
+            </div>
+            <div class="row2">
+              <div class="form-group">
+                <label>现状 <span class="req">*</span><span class="hint">当前数值</span></label>
+                <input type="text" id="f-current" placeholder="如：54%" />
+              </div>
+              <div class="form-group">
+                <label>结果 <span class="req">*</span><span class="hint">目标达到的数值</span></label>
+                <input type="text" id="f-target" placeholder="如：提升6pp至60%" />
+              </div>
+            </div>
+          </div>
+
         </div>
         <div class="form-actions">
           <button type="button" class="btn btn-secondary" onclick="resetForm()">重置</button>
@@ -474,13 +317,15 @@
       </div>
       <div class="list-controls">
         <select class="sort-select" id="sort-select" onchange="renderList()">
-          <option value="benefit-desc">收益 ↓ 高到低</option>
-          <option value="benefit-asc">收益 ↑ 低到高</option>
+          <option value="smart">🧠 智能排序</option>
           <option value="date-desc">时间 ↓ 最新</option>
           <option value="date-asc">时间 ↑ 最早</option>
         </select>
         <button class="btn-export" onclick="exportCSV()">📥 导出 CSV</button>
       </div>
+    </div>
+    <div class="sort-info" id="sort-info">
+      🧠 <strong>智能排序规则：</strong>定量目标优先，按提升幅度（数值越大越靠前）；定性目标排后，按提交时间倒序。
     </div>
     <div id="req-list-container"></div>
   </div>
@@ -513,21 +358,39 @@
       </div>
       <div class="form-group full-width">
         <label>需求详述</label>
-        <textarea id="e-detail" rows="4"></textarea>
+        <textarea id="e-detail" rows="3"></textarea>
       </div>
       <div class="form-group full-width">
-        <label>需求收益</label>
-        <div class="benefit-input-wrap">
-          <input type="number" id="e-benefit" min="0" step="any" />
-          <select id="e-benefit-unit" style="width:160px;">
-            <option value="万元GMV">万元GMV</option>
-            <option value="万元收入">万元收入</option>
-            <option value="工时/月">工时/月（节省）</option>
-            <option value="万DAU">万DAU</option>
-            <option value="自定义">自定义</option>
-          </select>
+        <label>目标类型</label>
+        <div class="type-toggle">
+          <button type="button" class="type-btn" id="e-btn-quant" onclick="setEditType('quant')">📊 定量目标</button>
+          <button type="button" class="type-btn" id="e-btn-qual" onclick="setEditType('qual')">💬 定性目标</button>
         </div>
-        <input type="text" id="e-benefit-custom" placeholder="自定义单位说明" style="margin-top:8px;" />
+      </div>
+      <input type="hidden" id="e-type" value="quant" />
+      <div class="form-group full-width">
+        <label>需求收益</label>
+        <textarea id="e-benefit" rows="2"></textarea>
+      </div>
+      <div id="e-quant-section" class="quant-fields">
+        <div class="form-group full-width">
+          <label>输出指标</label>
+          <input type="text" id="e-metric" />
+        </div>
+        <div class="form-group full-width">
+          <label>指标释义</label>
+          <input type="text" id="e-metric-def" />
+        </div>
+        <div class="row2">
+          <div class="form-group">
+            <label>现状</label>
+            <input type="text" id="e-current" />
+          </div>
+          <div class="form-group">
+            <label>结果</label>
+            <input type="text" id="e-target" />
+          </div>
+        </div>
       </div>
     </div>
     <div class="form-actions">
@@ -537,47 +400,49 @@
   </div>
 </div>
 
-<!-- Toast -->
 <div class="toast" id="toast"></div>
 
 <script>
-  // ——— 数据存储 ———
-  const STORAGE_KEY = 'req_collector_data';
+  const STORAGE_KEY = 'req_collector_v2';
 
   function getData() {
     try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
     catch(e) { return []; }
   }
-
-  function saveData(data) {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-  }
+  function saveData(data) { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); }
 
   // ——— 初始化 ———
   window.addEventListener('DOMContentLoaded', () => {
-    // 默认填今天日期
-    const today = new Date().toISOString().split('T')[0];
-    document.getElementById('f-date').value = today;
-
-    // 默认填当前周
+    document.getElementById('f-date').value = new Date().toISOString().split('T')[0];
     document.getElementById('f-week').value = getCurrentWeek();
-
-    // 收益单位切换
-    document.getElementById('f-benefit-unit').addEventListener('change', function() {
-      document.getElementById('f-benefit-custom').style.display = this.value === '自定义' ? 'block' : 'none';
-    });
-    document.getElementById('e-benefit-unit').addEventListener('change', function() {
-      document.getElementById('e-benefit-custom').style.display = this.value === '自定义' ? 'block' : 'none';
-    });
-
     renderList();
   });
 
   function getCurrentWeek() {
     const now = new Date();
-    const startOfYear = new Date(now.getFullYear(), 0, 1);
-    const weekNum = Math.ceil(((now - startOfYear) / 86400000 + startOfYear.getDay() + 1) / 7);
-    return `${now.getFullYear()}-W${String(weekNum).padStart(2,'0')}`;
+    const start = new Date(now.getFullYear(), 0, 1);
+    const week = Math.ceil(((now - start) / 86400000 + start.getDay() + 1) / 7);
+    return `${now.getFullYear()}-W${String(week).padStart(2,'0')}`;
+  }
+
+  // ——— 目标类型切换 ———
+  function setType(type) {
+    document.getElementById('f-type').value = type;
+    document.getElementById('btn-quant').classList.toggle('active', type === 'quant');
+    document.getElementById('btn-qual').classList.toggle('active', type === 'qual');
+    const qs = document.getElementById('quant-section');
+    qs.classList.toggle('hidden', type === 'qual');
+    // 定量时 metric/current/target 必填
+    ['f-metric','f-current','f-target'].forEach(id => {
+      document.getElementById(id).required = (type === 'quant');
+    });
+  }
+
+  function setEditType(type) {
+    document.getElementById('e-type').value = type;
+    document.getElementById('e-btn-quant').classList.toggle('active', type === 'quant');
+    document.getElementById('e-btn-qual').classList.toggle('active', type === 'qual');
+    document.getElementById('e-quant-section').classList.toggle('hidden', type === 'qual');
   }
 
   // ——— 标签切换 ———
@@ -589,12 +454,15 @@
     if (tab === 'list') renderList();
   }
 
-  // ——— 提交需求 ———
+  // ——— 提交 ———
   function submitReq(e) {
     e.preventDefault();
-    const unit = document.getElementById('f-benefit-unit').value;
-    const customUnit = document.getElementById('f-benefit-custom').value.trim();
-    const benefitUnit = unit === '自定义' ? (customUnit || '自定义') : unit;
+    const type = document.getElementById('f-type').value;
+    if (type === 'quant') {
+      if (!document.getElementById('f-metric').value.trim()) { showToast('请填写输出指标', 'error'); return; }
+      if (!document.getElementById('f-current').value.trim()) { showToast('请填写现状', 'error'); return; }
+      if (!document.getElementById('f-target').value.trim()) { showToast('请填写结果', 'error'); return; }
+    }
 
     const req = {
       id: Date.now(),
@@ -604,27 +472,65 @@
       name: document.getElementById('f-name').value.trim(),
       background: document.getElementById('f-background').value.trim(),
       detail: document.getElementById('f-detail').value.trim(),
-      benefit: parseFloat(document.getElementById('f-benefit').value),
-      benefitUnit: benefitUnit,
+      type,
+      benefit: document.getElementById('f-benefit').value.trim(),
+      metric: type === 'quant' ? document.getElementById('f-metric').value.trim() : '',
+      metricDef: type === 'quant' ? document.getElementById('f-metric-def').value.trim() : '',
+      current: type === 'quant' ? document.getElementById('f-current').value.trim() : '',
+      target: type === 'quant' ? document.getElementById('f-target').value.trim() : '',
     };
 
     const data = getData();
     data.push(req);
     saveData(data);
-
     showToast('需求提交成功！', 'success');
     resetForm();
-
-    // 自动跳到列表页
     setTimeout(() => switchTab('list'), 800);
   }
 
   function resetForm() {
     document.getElementById('reqForm').reset();
-    const today = new Date().toISOString().split('T')[0];
-    document.getElementById('f-date').value = today;
+    document.getElementById('f-date').value = new Date().toISOString().split('T')[0];
     document.getElementById('f-week').value = getCurrentWeek();
-    document.getElementById('f-benefit-custom').style.display = 'none';
+    setType('quant');
+  }
+
+  // ——— 智能排序分值 ———
+  function smartScore(req) {
+    if (req.type === 'qual') return -1; // 定性排后面
+
+    // 尝试从 current/target 提取数值算提升幅度
+    const delta = extractDelta(req.current, req.target);
+    if (delta !== null) return delta;
+
+    // 提取不出来就给个中间分
+    return 0;
+  }
+
+  function extractDelta(current, target) {
+    // 尝试从字符串中提取百分比数值
+    const parseNum = str => {
+      if (!str) return null;
+      // 匹配 "提升Xpp" 或 "提升X%"
+      const ppMatch = str.match(/提升\s*([\d.]+)\s*pp/i);
+      if (ppMatch) return parseFloat(ppMatch[1]);
+      const upMatch = str.match(/[+增提升]\s*([\d.]+)\s*%?/i);
+      if (upMatch) return parseFloat(upMatch[1]);
+      // 匹配纯数字
+      const nums = str.match(/([\d.]+)/g);
+      return nums ? parseFloat(nums[nums.length - 1]) : null;
+    };
+
+    // 优先从 target 里提升幅度
+    const deltaFromTarget = parseNum(target);
+    if (deltaFromTarget !== null) return deltaFromTarget;
+
+    // 算差值
+    const c = parseNum(current);
+    const t = parseNum(target);
+    if (c !== null && t !== null) return t - c;
+
+    return null;
   }
 
   // ——— 渲染列表 ———
@@ -633,73 +539,95 @@
     const sortVal = document.getElementById('sort-select').value;
     document.getElementById('req-count').textContent = data.length;
 
+    const sortInfo = document.getElementById('sort-info');
+    if (sortVal === 'smart') {
+      sortInfo.style.display = 'block';
+    } else {
+      sortInfo.style.display = 'none';
+    }
+
     const sorted = [...data].sort((a, b) => {
-      if (sortVal === 'benefit-desc') return b.benefit - a.benefit;
-      if (sortVal === 'benefit-asc') return a.benefit - b.benefit;
+      if (sortVal === 'smart') {
+        const sa = smartScore(a), sb = smartScore(b);
+        if (sa !== sb) return sb - sa;
+        return b.date.localeCompare(a.date);
+      }
       if (sortVal === 'date-desc') return b.date.localeCompare(a.date);
       if (sortVal === 'date-asc') return a.date.localeCompare(b.date);
       return 0;
     });
 
     const container = document.getElementById('req-list-container');
-
     if (sorted.length === 0) {
-      container.innerHTML = `
-        <div class="empty-state">
-          <div class="icon">📭</div>
-          <p>还没有需求，去提交第一条吧！</p>
-        </div>`;
+      container.innerHTML = `<div class="empty-state"><div class="icon">📭</div><p>还没有需求，去提交第一条吧！</p></div>`;
       return;
     }
 
-    const rankLabels = ['🥇', '🥈', '🥉'];
-
+    const rankLabels = ['🥇','🥈','🥉'];
     container.innerHTML = `<div class="req-list">${sorted.map((req, i) => {
       const rankClass = i < 3 ? ['top1','top2','top3'][i] : '';
       const rankIcon = i < 3 ? rankLabels[i] : `#${i+1}`;
-      const detailHtml = req.detail
-        ? `<div class="req-desc">${escHtml(req.detail.slice(0,80))}${req.detail.length > 80 ? `...<span class="req-desc-toggle" onclick="toggleDetail(this)">[展开]</span><span style="display:none">${escHtml(req.detail.slice(80))}</span>` : ''}</div>`
-        : '';
-      return `
-        <div class="req-card">
-          <div class="req-card-top">
-            <div class="req-rank ${rankClass}">${rankIcon}</div>
-            <div class="req-main">
-              <div class="req-title">${escHtml(req.name)}</div>
-              <div class="req-meta">
-                <span>📅 ${req.date}</span>
-                <span>📆 ${req.week}</span>
-                <span>👤 ${escHtml(req.proposer)}</span>
-              </div>
-              <div class="req-desc" style="color:#555;"><strong>背景：</strong>${escHtml(req.background.slice(0,100))}${req.background.length>100?'...':''}</div>
-              ${detailHtml}
-            </div>
-            <div class="benefit-tag">💰 ${req.benefit.toLocaleString()} ${escHtml(req.benefitUnit)}</div>
-          </div>
-          <div class="req-actions">
-            <button class="btn-sm btn-edit" onclick="openEdit(${req.id})">编辑</button>
-            <button class="btn-sm btn-danger" onclick="deleteReq(${req.id})">删除</button>
-          </div>
+      const typeTag = req.type === 'quant'
+        ? `<span class="type-tag quant">定量</span>`
+        : `<span class="type-tag qual">定性</span>`;
+
+      // 提升幅度标签
+      let deltaHtml = '';
+      if (req.type === 'quant' && req.current && req.target) {
+        deltaHtml = `<div class="delta-badge">📈 ${escHtml(req.current)} → ${escHtml(req.target)}</div>`;
+      }
+
+      // 收益区块
+      let benefitHtml = `<div class="benefit-block">
+        <div class="b-title">💰 需求收益</div>
+        <div class="benefit-row">
+          <div class="b-item" style="flex:1"><div class="b-label">收益描述</div><div class="b-val">${escHtml(req.benefit)}</div></div>
         </div>`;
+      if (req.type === 'quant') {
+        benefitHtml += `<div class="benefit-row" style="margin-top:8px">
+          <div class="b-item"><div class="b-label">输出指标</div><div class="b-val">${escHtml(req.metric)}</div></div>
+          ${req.metricDef ? `<div class="b-item"><div class="b-label">指标释义</div><div class="b-val">${escHtml(req.metricDef)}</div></div>` : ''}
+          <div class="b-item"><div class="b-label">现状</div><div class="b-val">${escHtml(req.current)}</div></div>
+          <div class="b-item"><div class="b-label">结果</div><div class="b-val">${escHtml(req.target)}</div></div>
+        </div>`;
+      }
+      benefitHtml += `</div>`;
+
+      const bgHtml = req.background ? `<div class="req-desc"><strong>背景：</strong>${escHtml(req.background.slice(0,100))}${req.background.length>100?'<span class="req-desc-toggle" onclick="toggleDetail(this)">[展开]</span><span style="display:none">'+escHtml(req.background.slice(100))+'</span>':''}</div>` : '';
+
+      return `<div class="req-card">
+        <div class="req-card-top">
+          <div class="req-rank ${rankClass}">${rankIcon}</div>
+          <div class="req-main">
+            <div class="req-title">${escHtml(req.name)}${typeTag}</div>
+            <div class="req-meta">
+              <span>📅 ${req.date}</span>
+              <span>📆 ${req.week}</span>
+              <span>👤 ${escHtml(req.proposer)}</span>
+            </div>
+            ${bgHtml}
+            ${benefitHtml}
+          </div>
+          ${deltaHtml}
+        </div>
+        <div class="req-actions">
+          <button class="btn-sm btn-edit" onclick="openEdit(${req.id})">编辑</button>
+          <button class="btn-sm btn-danger" onclick="deleteReq(${req.id})">删除</button>
+        </div>
+      </div>`;
     }).join('')}</div>`;
   }
 
   function toggleDetail(el) {
-    const hidden = el.nextElementSibling;
-    if (hidden.style.display === 'none') {
-      hidden.style.display = 'inline';
-      el.textContent = '[收起]';
-    } else {
-      hidden.style.display = 'none';
-      el.textContent = '[展开]';
-    }
+    const h = el.nextElementSibling;
+    if (h.style.display === 'none') { h.style.display = 'inline'; el.textContent = '[收起]'; }
+    else { h.style.display = 'none'; el.textContent = '[展开]'; }
   }
 
   // ——— 删除 ———
   function deleteReq(id) {
     if (!confirm('确认删除这条需求？')) return;
-    const data = getData().filter(r => r.id !== id);
-    saveData(data);
+    saveData(getData().filter(r => r.id !== id));
     renderList();
     showToast('已删除', 'success');
   }
@@ -718,19 +646,11 @@
     document.getElementById('e-background').value = req.background;
     document.getElementById('e-detail').value = req.detail || '';
     document.getElementById('e-benefit').value = req.benefit;
-
-    const knownUnits = ['万元GMV','万元收入','工时/月（节省）','万DAU'];
-    const unitSel = document.getElementById('e-benefit-unit');
-    const customInput = document.getElementById('e-benefit-custom');
-    if (knownUnits.includes(req.benefitUnit)) {
-      unitSel.value = req.benefitUnit;
-      customInput.style.display = 'none';
-    } else {
-      unitSel.value = '自定义';
-      customInput.value = req.benefitUnit;
-      customInput.style.display = 'block';
-    }
-
+    document.getElementById('e-metric').value = req.metric || '';
+    document.getElementById('e-metric-def').value = req.metricDef || '';
+    document.getElementById('e-current').value = req.current || '';
+    document.getElementById('e-target').value = req.target || '';
+    setEditType(req.type || 'quant');
     document.getElementById('editModal').classList.add('show');
   }
 
@@ -744,11 +664,7 @@
     const data = getData();
     const idx = data.findIndex(r => r.id === editingId);
     if (idx === -1) return;
-
-    const unit = document.getElementById('e-benefit-unit').value;
-    const customUnit = document.getElementById('e-benefit-custom').value.trim();
-    const benefitUnit = unit === '自定义' ? (customUnit || '自定义') : unit;
-
+    const type = document.getElementById('e-type').value;
     data[idx] = {
       ...data[idx],
       date: document.getElementById('e-date').value,
@@ -757,10 +673,13 @@
       name: document.getElementById('e-name').value.trim(),
       background: document.getElementById('e-background').value.trim(),
       detail: document.getElementById('e-detail').value.trim(),
-      benefit: parseFloat(document.getElementById('e-benefit').value),
-      benefitUnit,
+      type,
+      benefit: document.getElementById('e-benefit').value.trim(),
+      metric: document.getElementById('e-metric').value.trim(),
+      metricDef: document.getElementById('e-metric-def').value.trim(),
+      current: document.getElementById('e-current').value.trim(),
+      target: document.getElementById('e-target').value.trim(),
     };
-
     saveData(data);
     closeEditModal();
     renderList();
@@ -770,47 +689,34 @@
   // ——— 导出 CSV ———
   function exportCSV() {
     const data = getData();
-    if (data.length === 0) { showToast('没有数据可以导出', 'error'); return; }
-
-    const sortVal = document.getElementById('sort-select').value;
-    const sorted = [...data].sort((a, b) => {
-      if (sortVal === 'benefit-desc') return b.benefit - a.benefit;
-      if (sortVal === 'benefit-asc') return a.benefit - b.benefit;
-      if (sortVal === 'date-desc') return b.date.localeCompare(a.date);
-      if (sortVal === 'date-asc') return a.date.localeCompare(b.date);
-      return 0;
+    if (!data.length) { showToast('没有数据可导出', 'error'); return; }
+    const sorted = [...data].sort((a,b) => {
+      const sa = smartScore(a), sb = smartScore(b);
+      if (sa !== sb) return sb - sa;
+      return b.date.localeCompare(a.date);
     });
-
-    const headers = ['排名','填写时间','归属周','需求提出人','需求名称','需求背景','需求详述','需求收益','收益单位'];
-    const rows = sorted.map((r, i) => [
-      i+1, r.date, r.week, r.proposer, r.name,
-      r.background, r.detail || '', r.benefit, r.benefitUnit
+    const headers = ['排名','填写时间','归属周','需求提出人','需求名称','需求背景','需求详述','目标类型','需求收益','输出指标','指标释义','现状','结果'];
+    const rows = sorted.map((r,i) => [
+      i+1, r.date, r.week, r.proposer, r.name, r.background, r.detail||'',
+      r.type==='quant'?'定量':'定性', r.benefit, r.metric||'', r.metricDef||'', r.current||'', r.target||''
     ].map(v => `"${String(v).replace(/"/g,'""')}"`));
-
-    const csv = [headers.join(','), ...rows.map(r => r.join(','))].join('\n');
-    const blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8;' });
+    const csv = [headers.join(','), ...rows.map(r=>r.join(','))].join('\n');
+    const blob = new Blob(['\uFEFF'+csv], {type:'text/csv;charset=utf-8;'});
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
-    a.href = url;
-    a.download = `需求列表_${new Date().toISOString().split('T')[0]}.csv`;
-    a.click();
-    URL.revokeObjectURL(url);
+    a.href = url; a.download = `需求列表_${new Date().toISOString().split('T')[0]}.csv`;
+    a.click(); URL.revokeObjectURL(url);
     showToast('导出成功！', 'success');
   }
 
   // ——— 工具函数 ———
   function escHtml(str) {
-    return String(str)
-      .replace(/&/g,'&amp;')
-      .replace(/</g,'&lt;')
-      .replace(/>/g,'&gt;')
-      .replace(/"/g,'&quot;');
+    return String(str||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
 
   function showToast(msg, type='') {
     const t = document.getElementById('toast');
-    t.textContent = msg;
-    t.className = 'toast show ' + type;
+    t.textContent = msg; t.className = 'toast show ' + type;
     setTimeout(() => t.className = 'toast', 2500);
   }
 </script>
